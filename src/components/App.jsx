@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import css from './App.module.css';
 
 import { SectionTitle } from "./SectionTitle";
 
@@ -29,7 +29,7 @@ class App extends Component{
 
   render(){
     return (
-      <div>
+      <div className={css.common}>
         
         <SectionTitle id='0' title="Please leave feedback" children={this.handlerBtn}/>
         <SectionTitle id='1' title="Statistics" children={this.state}/>
