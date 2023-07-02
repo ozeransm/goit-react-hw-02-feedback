@@ -22,7 +22,7 @@ class App extends Component{
     return (
       <div className={css.common}>
           <h1>Please leave feedback</h1>
-          <SectionTitle state={this.state} total={()=>this.countTotalFeedback()} positiveFeedback={()=>this.countPositiveFeedbackPercentage()} handlerBtn={this.handlerBtn}/>
+          <SectionTitle state={this.state} total={()=>this.countTotalFeedback()} handlerBtn={this.handlerBtn}/>
       </div>
     );
   }
