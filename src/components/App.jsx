@@ -8,36 +8,22 @@ class App extends Component{
     good: 0,
     neutral: 0,
     bad: 0,
-    total: 0,
-    positiveFeedback: 0,
+    
   }
   countTotalFeedback(){
-    this.setState((prev)=>{return {total: prev.total+1}});
-    
+    return this.state.good+this.state.neutral+this.state.bad;
   }
-
-  countPositiveFeedbackPercentage(){
-    this.setState((prev)=>{return {...prev, positiveFeedback: Math.ceil((prev.good/prev.total)*100)}});
-
-  }
+  
   handlerBtn = (data)=>{
-    
     this.setState({ [data]: this.state[data]+1});
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
   }
 
   render(){
     return (
       <div className={css.common}>
-        
-        <SectionTitle id='0' title="Please leave feedback" children={this.handlerBtn}/>
-        <SectionTitle id='1' title="Statistics" children={this.state}/>
-        
+          <h1>Please leave feedback</h1>
+          <SectionTitle state={this.state} total={()=>this.countTotalFeedback()} positiveFeedback={()=>this.countPositiveFeedbackPercentage()} handlerBtn={this.handlerBtn}/>
       </div>
-      
-      
-     
     );
   }
   

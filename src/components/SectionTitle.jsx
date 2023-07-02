@@ -1,17 +1,19 @@
 import { Statistics } from "./Statistics";
-import { Button } from "./Button";
 import { Notification } from "./Notification";
-export const SectionTitle = ({ id, title, children })=>{
+export const SectionTitle = ({ state, total, positiveFeedback, handlerBtn })=>{
     
     return(
     <>
-        <h2>{title}</h2>
-        {
-          
-        children.total===0 ? <Notification message="There is no feedback"></Notification> :
-                    id==='0' ? <Button handlerBtn={children}/> 
-                             : <Statistics stat={children}/>
-        }
+       {
+        Object.keys(state).map((elem,i)=><button key={i} onClick={()=>handlerBtn(elem)}>{elem}</button>)
+       }
+       <h2>Statistics</h2>
+       {
+       total()!==0 ? <Statistics state={state} total={total} positiveFeedback={positiveFeedback}/>
+                   : <Notification message={'No feedback given'}/>
+       }
+       
+        
     </>
     )
 }

@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
-export const Statistics = ({stat:{ good, neutral, bad, total, positiveFeedback }})=>{
-   
+
+export const Statistics = ({state:{ good, neutral, bad },total })=>{
+
     return(
         <div>
             <p>Good: {good}</p>
             <p>Neutral: {neutral}</p>
             <p>Bad: {bad}</p>
-            <p>Total: {total}</p>
-            <p>Positive feedback: {positiveFeedback}</p>
+            <p>Total: {total()}</p>
+            <p>Positive feedback: {Math.ceil((good/total())*100)}%</p>
         </div>
     )
 }
@@ -15,6 +16,4 @@ Statistics.propTypes = {
     good: PropTypes.number,
     neutral: PropTypes.number,
     bad: PropTypes.number,
-    total: PropTypes.number,
-    positiveFeedback: PropTypes.number,
 }
